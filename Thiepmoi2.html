@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lễ Tốt Nghiệp - Linh Anh</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .invitation-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #8e44ad, #3498db, #2ecc71);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .graduate-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin: 15px 0 25px;
+            color: #8e44ad;
+            font-weight: 700;
+        }
+        
+        .event-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 10px 0;
+            color: #2c3e50;
+            letter-spacing: 2px;
+        }
+        
+        .details-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .detail-section {
+            flex: 1;
+            padding: 0 10px;
+        }
+        
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        .detail-content {
+            font-size: 18px;
+            color: #34495e;
+            line-height: 1.8;
+        }
+        
+        .invitation-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 5px;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rsvp {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #bdc3c7;
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        
+        .rsvp a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .rsvp a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .invitation-card {
+                padding: 30px 20px;
+            }
+            
+            .event-title {
+                font-size: 26px;
+            }
+            
+            .graduate-name {
+                font-size: 24px;
+            }
+            
+            .details-container {
+                flex-direction: column;
+            }
+            
+            .detail-section {
+                margin-bottom: 20px;
+            }
+            
+            .detail-title, .detail-content {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <h1>THÂN MỜI BẠN ĐẾN THAM DỰ</h1>
+        
+        <div class="event-title">LỄ TỐT NGHIỆP</div>
+        <div class="graduate-name">của Linh Anh</div>
+        
+        <!-- Insert your image here -->
+        <img src="xĩu =))).jpg" alt="Ảnh tốt nghiệp" class="invitation-image">
+        
+        <div class="details-container">
+            <div class="detail-section">
+                <div class="detail-title">THỜI GIAN</div>
+                <div class="detail-content">
+                    <div>THỨ BẢY</div>
+                    <div>05.06.2025</div>
+                    <div>15:00</div>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">ĐỊA ĐIỂM</div>
+                <div class="detail-content">
+                    <div>KHÁNH PHÒNG A</div>
+                    <div>TRƯỜNG ĐẠI HỌC</div>
+                    <div>BÁCH KHOA</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rsvp">
+            XÁC NHẬN THAM DỰ VỚI TRUNG - <a href="tel:+84912345678">84 912 345 678</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation effect when page loads
+            const card = document.querySelector('.invitation-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Click to enlarge effect
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
