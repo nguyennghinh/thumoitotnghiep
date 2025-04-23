@@ -2,198 +2,219 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thiệp Mời Tốt Nghiệp</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Mời Tốt Nghiệp</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #fce3ff, #e0dfff, #dcd3ff);
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fce3ff, #e0dfff, #dcd3ff);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
 
-        .snowflake {
-            position: fixed;
-            top: 0;
-            background: white;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: fall linear infinite;
-            opacity: 0.8;
-        }
+    .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      padding: 16px;
+      flex-wrap: wrap;
+      max-width: 100%;
+      justify-content: center;
+    }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
+    .side-image {
+      height: 400px;
+      max-width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
-        .container {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
+    .card {
+      width: 100%;
+      max-width: 460px;
+      height: 600px;
+      perspective: 1200px;
+    }
 
-        .side-image {
-            height: 600px;
-            width: auto;
-            border-radius: 16px;
-            object-fit: cover;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+    .inner-card {
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      position: relative;
+      cursor: pointer;
+    }
 
-        .card {
-            width: 460px;
-            height: 600px;
-            perspective: 1200px;
-        }
+    .card.open .inner-card {
+      transform: rotateY(180deg);
+    }
 
-        .inner-card {
-            width: 100%;
-            height: 100%;
-            transition: transform 1s;
-            transform-style: preserve-3d;
-            position: relative;
-            cursor: pointer;
-        }
+    .front,
+    .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
 
-        .card.open .inner-card {
-            transform: rotateY(180deg);
-        }
+    .front {
+      background: linear-gradient(135deg, #9b5de5, #f15bb5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    }
 
-        .front,
-        .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
+    .back {
+      background: #fff8fb;
+      transform: rotateY(180deg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      border: 3px dashed #f15bb5;
+      background-image: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png');
+      overflow-y: auto;
+    }
 
-        .front {
-            background: linear-gradient(135deg, #9b5de5, #f15bb5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-        }
+    .back h2 {
+      font-size: 26px;
+      margin-top: 12px;
+      color: #9b5de5;
+      text-align: center;
+    }
 
-        .back {
-            background: #fff8fb;
-            transform: rotateY(180deg);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            border: 3px dashed #f15bb5;
-            background-image: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png');
-            overflow-y: auto;
-        }
+    .back .line {
+      font-size: 16px;
+      color: #555;
+      margin: 6px 0;
+      text-align: center;
+      line-height: 1.4;
+    }
 
-        .back h2 {
-            font-size: 30px;
-            margin-top: 12px;
-            color: #9b5de5;
-            text-align: center;
-        }
+    .back img.content-image {
+      width: 100%;
+      max-height: 240px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin: 18px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-        .back .line {
-            font-size: 16px;
-            color: #555;
-            margin: 6px 0;
-            text-align: center;
-            line-height: 1.4;
-        }
+    .back .footer {
+      margin-top: 12px;
+      font-style: italic;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
 
-        .back img.content-image {
-            width: 100%;
-            max-height: 240px;
-            object-fit: cover;
-            border-radius: 14px;
-            margin: 18px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+    .back .icon {
+      font-size: 28px;
+      margin-bottom: 6px;
+      color: #f15bb5;
+    }
 
-        .back .footer {
-            margin-top: 12px;
-            font-style: italic;
-            text-align: center;
-            font-size: 14px;
-            color: #888;
-        }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
 
-        .back .icon {
-            font-size: 28px;
-            margin-bottom: 6px;
-            color: #f15bb5;
-        }
-    </style>
+      .side-image {
+        height: auto;
+        width: 100%;
+      }
+
+      .card {
+        height: auto;
+      }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: 0;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall linear infinite;
+      opacity: 0.8;
+      z-index: 1000;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <!-- Ảnh trái -->
-        <img class="side-image" src="anh1.jpg" alt="Trang trí trái" />
+  <div class="container">
+    <!-- Ảnh trái -->
+    <img class="side-image" src="anh1.jpg" alt="Trang trí trái" />
 
-        <!-- Tấm thiệp -->
-        <div class="card" onclick="toggleCard(this)">
-            <div class="inner-card">
-                <div class="front">
-                    🎓 Thiệp Mời
-                </div>
-                <div class="back">
-                    <div class="icon">🌸</div>
-                    <h2>Thư mời lễ tốt nghiệp</h2>
-                    <p class="line"><strong style=" font-family: 'Dancing Script', cursive; font-size: 26px;">Huỳnh Nguyên Hoàng</strong></p>
-                    <img class="content-image" src="anh2.png" alt="Ảnh tốt nghiệp">
-                    <p class="line">📅 13h00-15h00 - Chủ nhật, 4/5/2025</p>
-                    <p class="line">🏫 Cung thể thao Tiên Sơn Đà Nẵng</p>
-                    <div class="footer">
-                        Rất mong sự góp mặt của bạn để ngày vui thêm trọn vẹn ^__^ 💐
-                    </div>
-                </div>
-            </div>
+    <!-- Tấm thiệp -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="inner-card">
+        <div class="front">
+          🎓 Thiệp Mời
         </div>
+        <div class="back">
+          <div class="icon">🌸</div>
+          <h2>Thư mời lễ tốt nghiệp</h2>
+          <p class="line"><strong style=" font-family: 'Dancing Script', cursive; font-size: 26px;">Huỳnh Nguyên Hoàng</strong></p>
+          <img class="content-image" src="anh2.png" alt="Ảnh tốt nghiệp">
+          <p class="line">📅 13h00-15h00 - Chủ nhật, 4/5/2025</p>
+          <p class="line">🏫 Cung thể thao Tiên Sơn Đà Nẵng</p>
+          <div class="footer">
+            Rất mong sự góp mặt của bạn để ngày vui thêm trọn vẹn ^__^ 💐
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Hiệu ứng tuyết -->
-    <script>
-        function toggleCard(card) {
-            card.classList.toggle('open');
-        }
+  <!-- Hiệu ứng tuyết -->
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('open');
+    }
 
-        // Tạo tuyết rơi
-        function createSnowflake() {
-            const snowflake = document.createElement("div");
-            snowflake.classList.add("snowflake");
-            snowflake.style.left = Math.random() * 100 + "vw";
-            snowflake.style.width = snowflake.style.height = Math.random() * 8 + 4 + "px";
-            snowflake.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 90%)`;
-            snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
-            document.body.appendChild(snowflake);
-            setTimeout(() => snowflake.remove(), 10000);
-        }
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.width = snowflake.style.height = Math.random() * 8 + 4 + "px";
+      snowflake.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 90%)`;
+      snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 10000);
+    }
 
-        setInterval(createSnowflake, 200);
-    </script>
+    setInterval(createSnowflake, 200);
+  </script>
 
 </body>
 
